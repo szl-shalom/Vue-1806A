@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            padding: 0 12px;
+        }
+
+        span.active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <span v-for="(item,index) in tab" :class="{active:ind===index}" @click="ind=index">{{ item.title }}</span>
+        <ul>
+            <li v-for="item in tab[ind].children">{{ item }}</li>
+        </ul>
+    </div>
+</body>
+
+</html>

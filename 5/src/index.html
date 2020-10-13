@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>美女图片！！！！</h1>
+    <img src="./images/--.jpg" alt="">
+
+    <div id="app">
+        <div class="title">
+            <span v-for="(item,index) in arr" :class="{active:ind===index}" @click="ind=index">{{ item.title }}</span>
+        </div>
+        <div v-if="arr.length">
+            <span v-for="(item,index) in arr[ind].children">{{ item.name }}</span>
+        </div>
+    </div>
+</body>
+
+</html>

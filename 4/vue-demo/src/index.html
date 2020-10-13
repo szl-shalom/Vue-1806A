@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ mes }}</p>
+        <p :style="obj">123</p>
+        <p v-show="flag">111111</p>
+        <!-- <template v-if="flag">
+            <p>哈哈</p>
+            <p>嘻嘻</p>
+            <p>呵呵</p>
+            <p>呵呵</p>
+            <p>呵呵</p>
+            <p>呵呵</p>
+            <p>呵呵</p>
+        </template> -->
+        <h1>v-for循环指令</h1>
+        <ul>
+            <li v-for="(item,index) in arr">{{ item.name }}----{{ index }}</li>
+        </ul>
+
+
+        <ul>
+            <li v-for="(val,key) in person">{{ key }}----{{ val }}</li>
+        </ul>
+
+        <ul>
+            <li v-for="(num) in 5"> {{ num }}</li>
+        </ul>
+
+        <div v-for="(item,index) in arr1">
+            <h1>{{ item.name }}</h1>
+            <ul>
+                <template v-for="(item,index) in item.children">
+                    <li v-if="item.name" ::key="index">{{ item.name }}</li>
+                </template>
+            </ul>
+        </div>
+        <h1>v-on事件</h1>
+        <p>{{ count }}</p>
+        <button @click="count++">点我+1</button>
+        <button @click="go">点我+2 </button>
+        <a href="http://172.16.10.119/sso/" @click.prevent>点我到八维点歌名</a>
+
+        <input type="text" @keypress.enter="press">
+
+    </div>
+
+
+</body>
+
+</html>

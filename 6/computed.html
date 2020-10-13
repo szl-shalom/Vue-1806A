@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        全选<input type="checkbox" v-model="allCheck">
+        <ul>
+            <li v-for="(item,index) in arr">
+                <input type="checkbox" v-model="item.flag">
+                <span>
+                    <button @click="item.count--">-</button>
+                    <b>{{ item.count }}</b>
+                    <button @click="item.count++">+</button>
+                </span>
+                <span>单价：{{ item.price }}￥</span>
+                <span>小计：{{ item.count * item.price }}</span>
+            </li>
+        </ul>
+
+        <h1>总价钱：{{ allPrice }}总数量:{{ allCount }}</h1>
+    </div>
+    <script>
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        window.vm = new Vue({
+            // 放数据
+            data: {
+                mess: "haha",
+                num1: 1,
+                num2: 2,
+                arr: [{
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, {
+                    name: "张三" + random(1, 1000),
+                    count: random(2, 5),
+                    price: random(10, 500),
+                    flag: false,
+                }, ]
+            },
+            // 方法
+            // 计算属性
+            computed: {
+                allPrice() {
+                    return this.arr.reduce((p, n) => {
+                        return n.flag ? p + n.price * n.count : p
+                    }, 0)
+                },
+                allCount() {
+                    // p 代表初始值  n 代表数组中的每一项
+                    return this.arr.reduce((p, n) => {
+                        return n.flag ? p + +n.count : p
+                    }, 0)
+                },
+
+                allCheck: {
+                    // 点击单选触发
+                    get() {
+                        return this.arr.every((item) => {
+                            return item.flag
+                        })
+                    },
+                    // 点击全选触发
+                    set(val) {
+                        this.arr.forEach(item => {
+                            item.flag = val
+                        })
+                    }
+                }
+                // // 简写
+                // // sum1() {
+                // //     console.log("sum1计算属性执行了")
+                // //     return this.num1 + this.num2
+                // // }
+                // // 完整写法
+                // sum1: {
+                //     // 当访问的时候 触发
+                //     get() {
+                //         console.log("计算属性执行了")
+                //         return this.num1 + this.num2
+                //     },
+                //     // 当修改的时候触发
+                //     set(val) {
+                //         this.num1++;
+                //         this.num2++;
+                //     }
+                // }
+            },
+
+        })
+        // 挂载
+        vm.$mount("#app")
+
+        // 计算属性computed
+        // 1、定义像函数，用起来属性，
+        // 2、计算属性会有缓存
+    </script>
+</body>
+
+</html>

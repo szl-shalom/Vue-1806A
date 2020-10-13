@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+            1.处理input[type="text|email|tel"]
+        </h1>
+        <input type="email" v-model.trim="mes">
+        <p>mes:{{  mes }}</p>
+        <hr>
+        <h1>模拟v-model 语法糖</h1>
+        <input type="text" :value="val" @input="update($event)">
+
+        <hr>
+        <h1>处理单选</h1>
+        <input type="radio" value="篮球" v-model="radioArr">篮球
+        <input type="radio" value="足球" v-model="radioArr">足球
+        <input type="radio" value="台球" v-model="radioArr">台球
+        <p>
+            爱好：{{ radioArr }}
+        </p>
+
+
+        <h1>处理多选</h1>
+        <input type="checkbox" value="篮球" v-model="arr">篮球
+        <input type="checkbox" value="足球" v-model="arr">足球
+        <input type="checkbox" value="台球" v-model="arr">台球
+        <p>
+            爱好：{{ arr }}
+        </p>
+
+        <h1>下拉菜单</h1>
+        <select name="" id="" v-model="sel">
+            <option value="苹果">苹果</option>
+            <option value="香蕉">香蕉</option>
+            <option value="榴莲">榴莲</option>
+            <option value="菠萝蜜">菠萝蜜</option>
+        </select>
+        <p>选中 {{ sel }}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                mes: "",
+                radioArr: "篮球",
+                arr: ["足球"],
+                sel: "菠萝蜜",
+                val: "呵呵"
+            },
+            methods: {
+                update(e) {
+                    this.val = e.target.value
+                }
+            },
+        })
+        // v-model 表单绑定  双向数据绑定
+        // 1.处理input[type="text|email|tel"]
+        // 2.处理input[type="radio"]
+    </script>
+</body>
+
+</html>

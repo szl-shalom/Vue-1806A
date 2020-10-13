@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+            <span>todolist</span>
+            <input type="text" placeholder="请输入" @keypress.enter="add" v-model="val">
+        </h1>
+        <h2>
+            <span>正在进行</span>
+            <b>{{ process.length }}</b>
+        </h2>
+        <ul>
+            <li v-for="(item,index) in process" :key="item.id">
+                <input type="checkbox" v-model="item.flag">
+                <span>{{ item.name }}</span>
+                <b @click="del(item.id)">删除</b>
+            </li>
+        </ul>
+
+
+        <h2>
+            <span>已经完成</span>
+            <b>{{ finish.length }}</b>
+        </h2>
+        <ul>
+            <li v-for="(item,index) in finish" :key="item.id">
+                <input type="checkbox" v-model="item.flag">
+                <span>{{ item.name }}</span>
+                <b @click="del(item.id)">删除</b>
+            </li>
+        </ul>
+    </div>
+    <script>
+        let id = 0;
+        window.vm = new Vue({
+            el: "#app",
+            data: {
+                val: "",
+                list: [{
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, {
+                    name: "张三" + ++id,
+                    flag: Math.random() > 0.5 ? true : false,
+                    id,
+                }, ]
+            },
+            computed: {
+                finish() {
+                    return this.list.filter(item => {
+                        return item.flag
+                    })
+                },
+                process() {
+                    return this.list.filter(item => {
+                        return !item.flag
+                    })
+                }
+            },
+            methods: {
+                // 通过filter 过滤id
+                del(id) {
+                    this.list = this.list.filter(item => {
+                        return item.id != id
+                    })
+                },
+                add() {
+                    this.list.push({
+                        name: this.val,
+                        flag: false,
+                        id: ++id,
+                    })
+
+                    this.val = "";
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

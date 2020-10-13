@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "493213",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e780",
+      "unicode_decimal": 59264
+    },
+    {
+      "icon_id": "774382",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    }
+  ]
+}

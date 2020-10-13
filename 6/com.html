@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{ mes }}</h2>
+        <!-- 3、使用必须使用连字符  不建议其他方式  -->
+        <banner-comp></banner-comp>
+    </div>
+    <script>
+        // 1、声明全局组件  （建议使用 连字符  小驼峰 大驼峰 都行   ）
+        //    template 必须有一个根标签包含其他标签
+        //    data必须返回一个函数 返回再返回一个对象
+        Vue.component("Banner-comp", {
+            template: `
+                <div>
+                    <div>这是我的第一个组件</div>
+                    <div>
+                        {{ count }}
+                        <button @click="count++">点我</button>
+                    </div>
+                </div> 
+            `,
+            data() {
+                return {
+                    count: 10
+                }
+            }
+        })
+
+        // 新建vue实例
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                mes: "组件",
+                val: "哈哈哈哈哈"
+            },
+            // 2、注册组件(全局组件不用注册，局部组件需要注册)
+        })
+    </script>
+</body>
+
+</html>
